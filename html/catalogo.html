@@ -1,38 +1,42 @@
-<!-- Página de Inicio (Home) 
-Listado de productos ordenados alfabéticamente.
-Listado de categorías de productos.
-Acceso rápido a productos destacados.
--->
+<!-- Página de Catálogo de Productos
+Lista de productos disponibles con imágenes, nombres y precios.
+Filtro por categorías.
+Opción de ver más detalles de cada producto.
+--> 
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - E-commerce</title>
+    <title>Catálogo de Productos - Mi E-commerce</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <div class="logo"><i class="fas fa-shopping-bag"></i>Tienda</div>
+        <div class="logo"><i class="fas fa-shopping-bag"></i> Mi Tienda</div>
         <nav>
             <ul>
-                <li><a href="producto.html"><i class="fas fa-box-open"></i> Productos</a></li>
-                <li><a href="catalogo.html"><i class="fas fa-list"></i> Categorías</a></li>
-                <li><a href="catalogo.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
                 <li><a href="register.html"><i class="fas fa-user"></i> Iniciar Sesión</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="banner">
-        <h1>Bienvenido a Mi Tienda</h1>
-        <p>Encuentra los mejores productos al mejor precio.</p>
+    <section id="filtros">
+        <h2><i class="fas fa-filter"></i> Filtrar Productos</h2>
+        <select>
+            <option value="todos">Todos</option>
+            <option value="ropa">Ropa</option>
+            <option value="electronica">Electrónica</option>
+            <option value="hogar">Hogar</option>
+        </select>
     </section>
 
-    <section id="productos">
-        <h2><i class="fas fa-tags"></i> Productos Destacados</h2>
+    <section id="catalogo">
+        <h2><i class="fas fa-box-open"></i> Catálogo de Productos</h2>
         <div class="productos-grid">
             <div class="producto">
                 <img src="producto1.jpg" alt="Producto 1">
@@ -46,16 +50,13 @@ Acceso rápido a productos destacados.
                 <p>$2000</p>
                 <button><i class="fas fa-shopping-cart"></i> Agregar al Carrito</button>
             </div>
+            <div class="producto">
+                <img src="producto3.jpg" alt="Producto 3">
+                <h3>Producto 3</h3>
+                <p>$1500</p>
+                <button><i class="fas fa-shopping-cart"></i> Agregar al Carrito</button>
+            </div>
         </div>
-    </section>
-
-    <section id="categorias">
-        <h2><i class="fas fa-list"></i> Categorías</h2>
-        <ul>
-            <li><i class="fas fa-tshirt"></i> Ropa</li>
-            <li><i class="fas fa-mobile-alt"></i> Electrónica</li>
-            <li><i class="fas fa-couch"></i> Hogar</li>
-        </ul>
     </section>
 
     <footer>

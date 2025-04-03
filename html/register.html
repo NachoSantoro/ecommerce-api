@@ -1,1 +1,104 @@
-<!-- Pagina para hacer el registro de usuarios -->
+<!--Página de Registro y Login
+Formulario para registrarse.
+Formulario de inicio de sesión.
+!-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro / Login - Mi E-commerce</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="fas fa-shopping-bag"></i> Mi Tienda</div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="catalogo.html"><i class="fas fa-box-open"></i> Productos</a></li>
+                <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+                <li id="logout-link" style="display: none;"><a href="#" onclick="cerrarSesion()"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="auth">
+        <div class="form-container">
+            <h2 id="form-title">Registro</h2>
+            <form id="auth-form">
+                <input type="text" id="nombre" placeholder="Nombre Completo" required>
+                <input type="email" id="email" placeholder="Correo Electrónico" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <button type="submit" id="submit-btn">Registrarse</button>
+            </form>
+            <p id="toggle-text">¿Ya tienes cuenta? <a href="#" id="toggle-link">Inicia sesión aquí</a></p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const formTitle = document.getElementById("form-title");
+            const submitBtn = document.getElementById("submit-btn");
+            const toggleText = document.getElementById("toggle-text");
+            const toggleLink = document.getElementById("toggle-link");
+            const authForm = document.getElementById("auth-form");
+            const logoutLink = document.getElementById("logout-link");
+            let isLogin = false;
+
+            // Verificar si hay sesión activa
+            const usuarioActivo = localStorage.getItem("usuarioActivo");
+            if (usuarioActivo) {
+                window.location.href = "index.html";
+            }
+
+            toggleLink.addEventListener("click", (e) => {
+                e.preventDefault();
+                isLogin = !isLogin;
+                formTitle.textContent = isLogin ? "Iniciar Sesión" : "Registro";
+                submitBtn.textContent = isLogin ? "Iniciar Sesión" : "Registrarse";
+                toggleText.innerHTML = isLogin ? "¿No tienes cuenta? <a href='#' id='toggle-link'>Regístrate aquí</a>" : "¿Ya tienes cuenta? <a href='#' id='toggle-link'>Inicia sesión aquí</a>";
+            });
+
+            authForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+                const nombre = document.getElementById("nombre") ? document.getElementById("nombre").value : "";
+                
+                if (isLogin) {
+                    const storedUser = JSON.parse(localStorage.getItem(email));
+                    if (storedUser && storedUser.password === password) {
+                        alert("Inicio de sesión exitoso");
+                        localStorage.setItem("usuarioActivo", email);
+                        window.location.href = "index.html"; // Redirigir a la página principal
+                    } else {
+                        alert("Correo o contraseña incorrectos");
+                    }
+                } else {
+                    if (localStorage.getItem(email)) {
+                        alert("El correo ya está registrado");
+                    } else {
+                        localStorage.setItem(email, JSON.stringify({ nombre, email, password }));
+                        alert("Registro exitoso, ahora puedes iniciar sesión");
+                        localStorage.setItem("usuarioActivo", email);
+                        window.location.href = "index.html";
+                    }
+                }
+            });
+        });
+
+        function cerrarSesion() {
+            localStorage.removeItem("usuarioActivo");
+            alert("Sesión cerrada");
+            window.location.href = "registro_login.html";
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Mi Tienda. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
