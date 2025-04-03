@@ -1,0 +1,61 @@
+<!-- Página de Checkout**
+Confirmación de los productos a comprar.
+Cálculo final del costo.
+Confirmación de la compra (sin procesamiento de pago).-->
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Mi E-commerce</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="fas fa-shopping-bag"></i> Mi Tienda</div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="catalogo.html"><i class="fas fa-box-open"></i> Productos</a></li>
+                <li><a href="carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="checkout">
+        <h2><i class="fas fa-credit-card"></i> Finalizar Compra</h2>
+        <form>
+            <h3>Datos de Envío</h3>
+            <input type="text" placeholder="Nombre Completo" required>
+            <input type="text" placeholder="Dirección" required>
+            <input type="text" placeholder="Ciudad" required>
+            <input type="text" placeholder="Código Postal" required>
+            <input type="tel" placeholder="Teléfono" required>
+            
+            <h3>Método de Pago</h3>
+            <select required>
+                <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                <option value="paypal">PayPal</option>
+                <option value="transferencia">Transferencia Bancaria</option>
+            </select>
+            <input type="text" placeholder="Número de Tarjeta" required>
+            <input type="text" placeholder="Fecha de Vencimiento (MM/AA)" required>
+            <input type="text" placeholder="CVV" required>
+            
+            <h3>Resumen del Pedido</h3>
+            <p>Producto 1: $1000</p>
+            <p>Producto 2: $2000</p>
+            <h4>Total: $3000</h4>
+            
+            <button type="submit"><i class="fas fa-check"></i> Confirmar Compra</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Mi Tienda. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
