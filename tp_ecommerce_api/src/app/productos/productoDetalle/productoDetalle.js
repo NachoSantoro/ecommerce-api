@@ -1,7 +1,3 @@
-/*
-    este es el archivo para nuestro home.
-*/
-
 import Image from "next/image";
 import styles from "./page.module.css";
 
