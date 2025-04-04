@@ -1,3 +1,10 @@
+/*
+
+    en este archivo van los estilos css globales para toda la pagina web
+    tenemos que borrar esto que vino por default por el create npx y adaptarlo.
+
+*/
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
